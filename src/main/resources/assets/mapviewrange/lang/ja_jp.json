@@ -1,0 +1,9 @@
+{
+  "modmenu.summaryTranslation.mapviewrange": "地図が塗られる範囲を広げます",
+  "modmenu.descriptionTranslation.mapviewrange": "地図を持って歩いたときに塗られる範囲を広げます。倍率は1.0〜4.0倍で、Mod Menu・config/mapviewrange.json・/mapviewrange radius のいずれかで変更できます。",
+  "config.mapviewrange.title": "Map View Range 設定",
+  "config.mapviewrange.radius": "地図の読み込み範囲倍率: %s 倍",
+  "config.mapviewrange.reset": "初期値に戻す(%s 倍)",
+  "command.mapviewrange.radius.get": "現在の地図読み込み範囲倍率: %s 倍 (1.0〜4.0)",
+  "command.mapviewrange.radius.set": "地図読み込み範囲倍率を %s 倍 に変更しました"
+}

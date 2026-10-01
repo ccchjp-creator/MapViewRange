@@ -1,0 +1,66 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version '1.17-SNAPSHOT'
+    id 'maven-publish'
+}
+
+// ------------------------------------------------------------------
+// Ver.1.2.0 から Minecraft 26.3 専用です(複数バージョン切り替えは廃止)。
+// 必要な値はすべて gradle.properties にあります。
+//   ./gradlew build  -> build/libs/mapviewrange-26.3-<mod_version>.jar
+// ------------------------------------------------------------------
+
+println "=================================================="
+println " mapviewrange ビルド対象: Minecraft ${project.minecraft_version}"
+println "   loader      = ${project.loader_version}"
+println "   fabric-api  = ${project.fabric_api_version}"
+println "   modmenu     = ${project.modmenu_version}"
+println "=================================================="
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    // 出力jar名: mapviewrange-26.3-<mod_version>.jar
+    archivesName = "${project.archives_base_name}-${project.minecraft_version}"
+}
+
+repositories {
+    // Mod Menu
+    maven {
+        name = 'TerraformersMC'
+        url = 'https://maven.terraformersmc.com/releases/'
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+    withSourcesJar()
+}
+
+dependencies {
+    // MC 26.1以降のMinecraft本体は難読化されていない(unobfuscated)ため、
+    // mappingsの指定は不要かつ付けるとエラーになる。
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+    // Mod Menu は任意依存。コンパイルには使うが、jarには含めない。
+    // runtimeOnly は runClient でModMenuを一緒に起動して確認するため。
+    compileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
+    runtimeOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 25
+}

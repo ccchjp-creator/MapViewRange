@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "mapviewrange",
+  "version": "${version}",
+  "name": "Map View Range",
+  "description": "地図を持って移動した際に、周辺が塗られる(可視化される)範囲を広げるMOD",
+  "authors": [
+    "CCCHJP"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.example.mapviewrange.MapViewRangeMod"
+    ],
+    "modmenu": [
+      "net.example.mapviewrange.client.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "mapviewrange.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "fabric-api": "*",
+    "minecraft": "~26.3",
+    "java": ">=25"
+  },
+  "suggests": {
+    "modmenu": ">=21.0.0"
+  }
+}

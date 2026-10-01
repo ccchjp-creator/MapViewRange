@@ -1,0 +1,9 @@
+{
+  "modmenu.summaryTranslation.mapviewrange": "Expands the area revealed on maps",
+  "modmenu.descriptionTranslation.mapviewrange": "Expands how much of your map gets revealed as you walk. Adjustable from 1.0x to 4.0x via Mod Menu, config/mapviewrange.json, or /mapviewrange radius.",
+  "config.mapviewrange.title": "Map View Range Settings",
+  "config.mapviewrange.radius": "Reveal radius multiplier: %sx",
+  "config.mapviewrange.reset": "Reset to default (%sx)",
+  "command.mapviewrange.radius.get": "Current map reveal radius multiplier: %s (1.0-4.0)",
+  "command.mapviewrange.radius.set": "Map reveal radius multiplier set to %s"
+}
